@@ -14,10 +14,6 @@ let package = Package(
             targets: ["LibMpv"]
         ),
         .library(
-            name: "FFmpegKit",
-            targets: ["FFmpegKit"]
-        ),
-        .library(
             name: "Libffmpeg",
             type: .static,
             targets: ["Libffmpeg"]
@@ -75,10 +71,6 @@ let package = Package(
                 .linkedLibrary("z"),
                 .linkedLibrary("c++")
             ]
-        ),
-        .target(
-            name: "FFmpegKit",
-            dependencies: ["Libffmpeg"]
         ),
         .binaryTarget(
             name: "Libass",

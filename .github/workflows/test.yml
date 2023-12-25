@@ -1,0 +1,29 @@
+name: test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+
+    runs-on: macos-latest
+
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        submodules: recursive
+        
+    - name: package
+      run: |
+        touch aaa.txt
+        echo 'aaa' > aaa.txt
+
+    - name: commit and push
+      run: |
+        git config --global user.name 'Fixfly'
+        git config --global user.email 'fixfly-1010@fixfly.com'
+        git add .
+        git commit -m 'add build aritifacts'
+        git push origin main
+      env:
+        GH_TOKEN: ${{ secrets.GH_TOKEN }}
